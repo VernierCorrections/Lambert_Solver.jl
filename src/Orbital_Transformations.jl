@@ -27,7 +27,7 @@ Parameterizes an orbit in terms of an initial epoch, a final epoch, and six sets
 
 ...
 # Arguments
-- `coefficients::Matrix{Float64}`: The set of best-fit coefficients for the 12th-order Chebyshev polynomials that parameterize the orbital pertubations over the interval. 
+- `coefficients::Matrix{Float64}`: The set of best-fit coefficients for the 12th-order Chebyshev polynomials of the first kind that parameterize the orbital pertubations over the interval. 
 - `t_i::Float64`: The initial epoch, in seconds.
 - `t_f::Float64`: The final epoch, in seconds.
 
@@ -80,7 +80,18 @@ Parameterizes an orbit in terms of an initial epoch and the orbital elements of 
 end
 
 
-function ChebyshevT(x)
+"""
+    ChebyshevT(x::Float64)
+
+Generates a vector where each entry is the (n - 1)th order term of the 12th order Chebyshev polynomial of the first kind.
+
+...
+# Arguments
+- `x::Float64`
+
+...
+"""
+function ChebyshevT(x::Float64)
     return [
         1;
         x;
